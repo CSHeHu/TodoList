@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "todolistnodejs", "todolistnodejs\todolistnodejs.esproj", "{0BD89568-11D7-42D9-B2F7-2C244C23EB48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BD89568-11D7-42D9-B2F7-2C244C23EB48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD89568-11D7-42D9-B2F7-2C244C23EB48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD89568-11D7-42D9-B2F7-2C244C23EB48}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0BD89568-11D7-42D9-B2F7-2C244C23EB48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD89568-11D7-42D9-B2F7-2C244C23EB48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD89568-11D7-42D9-B2F7-2C244C23EB48}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6B29156-95D7-4D97-8F75-253B11497510}
+	EndGlobalSection
+EndGlobal
