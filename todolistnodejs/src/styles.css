@@ -11,6 +11,7 @@
 
 .todo_container {
     background: #fff;
+    width: 80%;
     padding: 3vh;
     box-sizing: border-box;
     justify-content: center;
@@ -30,6 +31,7 @@ form {
 input[type="text"] {
     border: 0.2vh solid #ddd;
     outline: none;
+    width: 70%;
 }
 
 button {
@@ -38,13 +40,14 @@ button {
     background-color: #28a745;
     color: white;
     cursor: pointer;
-    width: 100%;
+    width: 25vh;
 }
 
 .filters {
     display: flex;
     margin: 1vh;
-    
+    justify-content: center;
+    align-items: center;
 }
     .filters button.active {
         
