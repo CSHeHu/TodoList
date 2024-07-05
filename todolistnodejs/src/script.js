@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('submit').addEventListener('click', addToList);
     document.getElementById('todo-list').addEventListener('click', toggleTask);
+    document.getElementById('save').addEventListener('click', saveTodos);
 });
 
 function addToList(event) {
@@ -27,7 +28,6 @@ function addToList(event) {
 function toggleTask(event) {
     const target = event.target;
 
-    // Toggle completed/pending status
     if (target.tagName === 'LI') {
         target.classList.toggle('completed');
     }
@@ -57,4 +57,29 @@ function toggleFilter(event) {
     });
     target.classList.add('active');
     
+}
+
+function saveTodos() {
+    const todos = [];
+    document.querySelectorAll('#todo-list li').forEach(item => {
+        todos.push({
+            listItem: item.textContent,
+            completed: item.classList.contains('completed')
+        });
+    });
+
+    fetch('/api/todos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todos)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
