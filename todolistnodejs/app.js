@@ -31,3 +31,14 @@ app.post('/api/todos', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+app.get('/api/loadtodos', (req, res) => {
+    fs.readFile('data.json', (err, data) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error loading to-do list' });
+        }
+        const todos = JSON.parse(data.toString());
+        res.status(200).json(todos);
+    });
+});

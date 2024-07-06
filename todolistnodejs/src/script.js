@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('submit').addEventListener('click', addToList);
     document.getElementById('todo-list').addEventListener('click', toggleTask);
     document.getElementById('save').addEventListener('click', saveTodos);
+    loadTodos();
 });
 
 function addToList(event) {
@@ -63,7 +64,7 @@ function saveTodos() {
     const todos = [];
     document.querySelectorAll('#todo-list li').forEach(item => {
         todos.push({
-            listItem: item.textContent,
+            description: item.textContent,
             completed: item.classList.contains('completed')
         });
     });
@@ -78,6 +79,26 @@ function saveTodos() {
         .then(response => response.json())
         .then(data => {
             console.log(data.message);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
+function loadTodos() {
+    fetch('/api/loadtodos')
+        .then(response => response.json())
+        .then(data => {
+            const todoList = document.getElementById('todo-list');
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item.description;
+                if (item.completed) {
+                    listItem.classList.add('completed');
+                }
+                todoList.appendChild(listItem);
+            });
         })
         .catch(error => {
             console.error('Error:', error);
