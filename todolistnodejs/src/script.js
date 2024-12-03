@@ -23,7 +23,7 @@ function addToList(event) {
     todoList.appendChild(listItem);
 
     todoInput.value = '';
-   
+    saveTodos();
 }
 
 function toggleTask(event) {
@@ -68,39 +68,55 @@ function saveTodos() {
             completed: item.classList.contains('completed')
         });
     });
+    
+    localStorage.setItem("todolist", todos);
 
-    fetch('/api/todos', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(todos)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.message);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+//    fetch('/api/todos', { 
+//        method: 'POST', 
+//        headers: { 
+//            'Content-Type': 'application/json' 
+//        }, 
+//        body: JSON.stringify(todos) 
+//    })
+//        .then(response => response.json())
+//        .then(data => {
+//            console.log(data.message);
+//        })
+//        .catch(error => {
+//            console.error('Error:', error);
+//        });
 }
 
 
 function loadTodos() {
-    fetch('/api/loadtodos')
-        .then(response => response.json())
-        .then(data => {
-            const todoList = document.getElementById('todo-list');
-            data.forEach(item => {
-                const listItem = document.createElement('li');
-                listItem.textContent = item.description;
-                if (item.completed) {
-                    listItem.classList.add('completed');
-                }
-                todoList.appendChild(listItem);
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+//    fetch('/api/loadtodos')
+//        .then(response => response.json())
+//        .then(data => {
+//            const todoList = document.getElementById('todo-list');
+//            data.forEach(item => {
+//                const listItem = document.createElement('li');
+//                listItem.textContent = item.description;
+//                if (item.completed) {
+//                    listItem.classList.add('completed');
+//                }
+//                todoList.appendChild(listItem);
+//            });
+//        })
+//        .catch(error => {
+//            console.error('Error:', error);
+//        });
+    const data = localStorage.getItem("todolist");
+   
+    const todoList = document.getElementById('todo-list');
+    if (data !== null){
+        data.forEach(item => {
+           const listItem = document.createElement('li');
+           listItem.textContent = item.description;
+           if (item.completed) {
+               listItem.classList.add('completed');
+           }
+           todoList.appendChild(listItem);
+
+       });
+    }
 }
