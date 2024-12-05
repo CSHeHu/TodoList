@@ -68,8 +68,8 @@ function saveTodos() {
             completed: item.classList.contains('completed')
         });
     });
-    
-    localStorage.setItem("todolist", todos);
+    const todosJSON = JSON.stringify(todos); 
+    localStorage.setItem("todolist", todosJSON);
 
 //    fetch('/api/todos', { 
 //        method: 'POST', 
@@ -105,10 +105,10 @@ function loadTodos() {
 //        .catch(error => {
 //            console.error('Error:', error);
 //        });
-    const data = localStorage.getItem("todolist");
-   
+    const dataJSON = localStorage.getItem("todolist");
     const todoList = document.getElementById('todo-list');
-    if (data !== null){
+    if (dataJSON !== null){
+        const data = JSON.parse(dataJSON);
         data.forEach(item => {
            const listItem = document.createElement('li');
            listItem.textContent = item.description;
