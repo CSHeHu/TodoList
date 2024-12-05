@@ -32,6 +32,7 @@ function toggleTask(event) {
     if (target.tagName === 'LI') {
         target.classList.toggle('completed');
     }
+    saveTodos();
 }
 
 function toggleFilter(event) {
@@ -57,7 +58,6 @@ function toggleFilter(event) {
         btn.classList.remove('active');
     });
     target.classList.add('active');
-    
 }
 
 function saveTodos() {
@@ -70,42 +70,11 @@ function saveTodos() {
     });
     const todosJSON = JSON.stringify(todos); 
     localStorage.setItem("todolist", todosJSON);
-
-//    fetch('/api/todos', { 
-//        method: 'POST', 
-//        headers: { 
-//            'Content-Type': 'application/json' 
-//        }, 
-//        body: JSON.stringify(todos) 
-//    })
-//        .then(response => response.json())
-//        .then(data => {
-//            console.log(data.message);
-//        })
-//        .catch(error => {
-//            console.error('Error:', error);
-//        });
 }
 
 
 function loadTodos() {
-//    fetch('/api/loadtodos')
-//        .then(response => response.json())
-//        .then(data => {
-//            const todoList = document.getElementById('todo-list');
-//            data.forEach(item => {
-//                const listItem = document.createElement('li');
-//                listItem.textContent = item.description;
-//                if (item.completed) {
-//                    listItem.classList.add('completed');
-//                }
-//                todoList.appendChild(listItem);
-//            });
-//        })
-//        .catch(error => {
-//            console.error('Error:', error);
-//        });
-    const dataJSON = localStorage.getItem("todolist");
+   const dataJSON = localStorage.getItem("todolist");
     const todoList = document.getElementById('todo-list');
     if (dataJSON !== null){
         const data = JSON.parse(dataJSON);
