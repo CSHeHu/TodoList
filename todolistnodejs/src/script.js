@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.getElementById('submit').addEventListener('click', addToList);
     document.getElementById('todo-list').addEventListener('click', toggleTask);
-    document.getElementById('save').addEventListener('click', saveTodos);
+    document.getElementById('clear').addEventListener('click', clearTodos);
     loadTodos();
 });
 
@@ -74,7 +74,7 @@ function saveTodos() {
 
 
 function loadTodos() {
-   const dataJSON = localStorage.getItem("todolist");
+    const dataJSON = localStorage.getItem("todolist");
     const todoList = document.getElementById('todo-list');
     if (dataJSON !== null){
         const data = JSON.parse(dataJSON);
@@ -88,4 +88,14 @@ function loadTodos() {
 
        });
     }
+    else {
+        while (todoList.firstChild){
+            todoList.removeChild(todoList.lastChild);
+        }
+    }
+}
+
+function clearTodos() {
+    localStorage.clear();
+    loadTodos();
 }
